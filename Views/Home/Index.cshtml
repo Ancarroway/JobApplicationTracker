@@ -1,0 +1,43 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="text-center py-5">
+    <h1 class="display-4 fw-bold">Track Your Job Search With Confidence</h1>
+
+    <p class="lead mt-3">
+        Job Tracker Pro helps organize job applications, interview progress,
+        salary details, and posting links in one simple dashboard.
+    </p>
+
+    <a asp-controller="JobApplications" asp-action="Index" class="btn btn-primary btn-lg mt-3">
+        View Applications
+    </a>
+
+    <a asp-controller="JobApplications" asp-action="Create" class="btn btn-outline-secondary btn-lg mt-3">
+        Add New Application
+    </a>
+</div>
+
+<div class="row text-center mt-5">
+    <div class="col-md-4">
+        <div class="card p-4 shadow-sm">
+            <h4>Organize Applications</h4>
+            <p>Save company names, job titles, locations, salaries, and posting links.</p>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card p-4 shadow-sm">
+            <h4>Track Progress</h4>
+            <p>Monitor each application from applied to interviewing, offer, or rejection.</p>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card p-4 shadow-sm">
+            <h4>Search Quickly</h4>
+            <p>Find applications by company, job title, or location using built-in search.</p>
+        </div>
+    </div>
+</div>

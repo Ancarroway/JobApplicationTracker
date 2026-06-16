@@ -1,0 +1,152 @@
+@model IEnumerable<JobApplicationTracker.Models.JobApplication>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Job Applications</h1>
+
+<div class="row mb-4">
+
+    <div class="col-md-3">
+        <div class="card text-center">
+            <div class="card-body">
+                <h5>Applied</h5>
+                <h2>@ViewBag.AppliedCount</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card text-center">
+            <div class="card-body">
+                <h5>Interviewing</h5>
+                <h2>@ViewBag.InterviewCount</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card text-center">
+            <div class="card-body">
+                <h5>Offers</h5>
+                <h2>@ViewBag.OfferCount</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card text-center">
+            <div class="card-body">
+                <h5>Rejected</h5>
+                <h2>@ViewBag.RejectedCount</h2>
+            </div>
+        </div>
+    </div>
+
+</div>
+<p>
+    <a asp-action="Create">Add Application</a>
+</p>
+<form asp-action="Index" method="get" class="mb-3">
+    <input type="text"
+           name="searchString"
+           placeholder="Search company, title, or location"
+           class="form-control" />
+    <bf />
+    <button type="submit" class="btn btn-primary">
+        Search
+    </button>
+
+    <a asp-action="Index" class="btn btn-secondary">
+        Clear
+    </a>
+
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CompanyName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JobTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Location)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateApplied)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SalaryRange)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JobPostingUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Notes)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(model => item.CompanyName)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.JobTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Location)
+            </td>
+                <td>
+                    @if (item.Status == "Applied")
+                    {
+                        <span class="badge bg-primary">Applied</span>
+                    }
+                    else if (item.Status == "Interviewing")
+                    {
+                        <span class="badge bg-warning text-dark">Interviewing</span>
+                    }
+                    else if (item.Status == "Offer Received")
+                    {
+                        <span class="badge bg-success">Offer Received</span>
+                    }
+                    else if (item.Status == "Rejected")
+                    {
+                        <span class="badge bg-danger">Rejected</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-secondary">@item.Status</span>
+                    }
+                </td>
+            <td>
+                @Html.DisplayFor(model => item.DateApplied)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.SalaryRange)
+            </td>
+                <td>
+                    <a href="@item.JobPostingUrl" target="_blank">
+                        View Posting
+                    </a>
+                </td>
+            <td>
+                @Html.DisplayFor(model => item.Notes)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
