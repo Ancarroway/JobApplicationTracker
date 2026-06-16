@@ -28,15 +28,15 @@ A full-stack ASP.NET Core MVC web application for tracking job applications, int
 
 ### Home Page
 
-![Home Page](Screenshots/HomePage.png)
+![Home Page](HomePage.png)
 
 ### Dashboard
 
-![Dashboard](Screenshots/Dashboard.png)
+![Dashboard](Dashboard.png)
 
 ### Create Application
 
-![Create Application](Screenshots/CreateApplication.png)
+![Create Application](CreateApplication.png)
 
 
 ## Future Improvements
